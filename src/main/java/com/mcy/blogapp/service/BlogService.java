@@ -54,7 +54,7 @@ public class BlogService {
         if (blogOpt.isPresent() && tagOpt.isPresent()) {
             Blog blog = blogOpt.get();
             Tag tag = tagOpt.get();
-            blog.getTags().add(tag);
+            blog.getTagList().add(tag);
             return blogRepository.save(blog);
         }
         return null;
@@ -67,13 +67,13 @@ public class BlogService {
         if (blogOpt.isPresent() && tagOpt.isPresent()) {
             Blog blog = blogOpt.get();
             Tag tag = tagOpt.get();
-            blog.getTags().remove(tag);
+            blog.getTagList().remove(tag);
             return blogRepository.save(blog);
         }
         return null;
     }
 
-    public List<Blog> getAllBlogsByTag() {
-        return null;
+    public List<Blog> getAllBlogsByTag(Long tagId) {
+        return blogRepository.findAllByTagId(tagId);
     }
 }

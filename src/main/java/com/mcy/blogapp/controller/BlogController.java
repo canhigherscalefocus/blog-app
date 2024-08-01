@@ -48,8 +48,8 @@ public class BlogController {
 
     //todo: may be change the endpoint to tag controller?
     @GetMapping("/tags/{tagId}")
-    public List<Blog> getAllBlogsByTag() {
-        return blogService.getAllBlogsByTag();
+    public List<Blog> getAllBlogsByTag(@PathVariable Long tagId) {
+        return blogService.getAllBlogsByTag(tagId);
     }
 
     @PostMapping("/{blogId}/tags")

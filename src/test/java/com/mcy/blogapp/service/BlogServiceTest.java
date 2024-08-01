@@ -40,7 +40,7 @@ public class BlogServiceTest {
         blog.setId(1L);
         blog.setTitle("My First Blog");
         blog.setText("This is the content of the blog.");
-        blog.setTags(new HashSet<>());
+        blog.setTagList(new HashSet<>());
 
         tag = new Tag();
         tag.setId(1L);
@@ -108,7 +108,7 @@ public class BlogServiceTest {
         when(blogRepository.save(any(Blog.class))).thenReturn(blog);
         Blog updatedBlog = blogService.addTagToBlog(1L, 1L);
         assertNotNull(updatedBlog);
-        assertTrue(updatedBlog.getTags().contains(tag));
+        assertTrue(updatedBlog.getTagList().contains(tag));
         verify(blogRepository, times(1)).findById(1L);
         verify(tagRepository, times(1)).findById(1L);
         verify(blogRepository, times(1)).save(blog);
@@ -127,13 +127,13 @@ public class BlogServiceTest {
 
     @Test
     void testRemoveTagFromBlog() {
-        blog.getTags().add(tag);
+        blog.getTagList().add(tag);
         when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
         when(tagRepository.findById(1L)).thenReturn(Optional.of(tag));
         when(blogRepository.save(any(Blog.class))).thenReturn(blog);
         Blog updatedBlog = blogService.removeTagFromBlog(1L, 1L);
         assertNotNull(updatedBlog);
-        assertFalse(updatedBlog.getTags().contains(tag));
+        assertFalse(updatedBlog.getTagList().contains(tag));
         verify(blogRepository, times(1)).findById(1L);
         verify(tagRepository, times(1)).findById(1L);
         verify(blogRepository, times(1)).save(blog);

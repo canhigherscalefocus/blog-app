@@ -38,14 +38,14 @@ public class BlogRepositoryTest {
         tags.add(tag1);
         tags.add(tag2);
 
-        blog.setTags(tags);
+        blog.setTagList(tags);
 
         Blog savedBlog = blogRepository.save(blog);
 
         assertNotNull(savedBlog);
         assertEquals("My First Blog", savedBlog.getTitle());
         assertEquals("This is the content of the blog.", savedBlog.getText());
-        assertEquals(2, savedBlog.getTags().size());
+        assertEquals(2, savedBlog.getTagList().size());
     }
 
     @Test

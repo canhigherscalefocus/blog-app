@@ -21,5 +21,5 @@ public class Blog {
             name = "blog_tag",
             joinColumns = @JoinColumn(name = "blog_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private Set<Tag> tags;
+    private Set<Tag> tagList;
 }

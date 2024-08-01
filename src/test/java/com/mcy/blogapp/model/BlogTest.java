@@ -26,12 +26,12 @@ public class BlogTest {
         tags.add(tag1);
         tags.add(tag2);
 
-        blog.setTags(tags);
+        blog.setTagList(tags);
 
         assertEquals(1L, blog.getId());
         assertEquals("My First Blog", blog.getTitle());
         assertEquals("This is the content of the blog.", blog.getText());
-        assertEquals(2, blog.getTags().size());
+        assertEquals(2, blog.getTagList().size());
     }
 
     @Test
@@ -48,9 +48,9 @@ public class BlogTest {
         Set<Tag> tags = new HashSet<>();
         tags.add(tag);
 
-        blog.setTags(tags);
+        blog.setTagList(tags);
 
-        assertTrue(blog.getTags().contains(tag));
+        assertTrue(blog.getTagList().contains(tag));
     }
 
     @Test
@@ -67,9 +67,9 @@ public class BlogTest {
         Set<Tag> tags = new HashSet<>();
         tags.add(tag);
 
-        blog.setTags(tags);
-        blog.getTags().remove(tag);
+        blog.setTagList(tags);
+        blog.getTagList().remove(tag);
 
-        assertFalse(blog.getTags().contains(tag));
+        assertFalse(blog.getTagList().contains(tag));
     }
 }
